@@ -1,11 +1,25 @@
 init -990 python in mas_submod_utils:
-    Submod(
+    lcl_submod = Submod(
         author="multimokia",
         name="English Localization",
         description="Allows Monika to use different English language rules",
-        version="1.0.1",
+        version="1.0.2",
         settings_pane="english_localization_settings"
     )
+
+init -989 python in lcl_utils:
+    import store
+
+    #Register the updater if needed
+    if store.mas_submod_utils.isSubmodInstalled("Submod Updater Plugin"):
+        store.sup_utils.SubmodUpdater(
+            submod=store.mas_submod_utils.lcl_submod,
+            user_name="multimokia",
+            repository_name="MAS-Util-English-Localization-Settings",
+            tag_formatter=lambda x: x[x.index('_') + 1:],
+            update_dir="",
+            attachment_id=None,
+        )
 
 #The settings pane
 screen english_localization_settings():
