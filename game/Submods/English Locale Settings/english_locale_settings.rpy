@@ -201,7 +201,7 @@ init -900 python in lcl_utils:
 
         self._duplicatable = self.slow
 
-        if renpy.version()[:renpy.version().index('.')].replace("Ren'Py ", '') == '7':
+        if store.mas_globals.is_r7:
             # The list of displayables and their offsets.
             self.displayable_offsets = []
 
